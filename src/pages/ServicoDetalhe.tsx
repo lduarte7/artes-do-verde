@@ -1,5 +1,5 @@
 import { useParams, Link, Navigate } from "react-router-dom";
-import { MessageCircle, Phone, CheckCircle, ArrowRight, AlertTriangle, Wrench } from "lucide-react";
+import { MessageCircle, CheckCircle, ArrowRight, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SEO from "@/components/SEO";
 import Header from "@/components/Header";
@@ -10,11 +10,73 @@ import CTABlock from "@/components/CTABlock";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { SERVICES, REVIEWS, getWhatsAppUrl, getPhoneUrl } from "@/lib/constants";
+import { SERVICES_CONTENT } from "@/lib/content/services-content";
+import { truncateMeta } from "@/lib/seo-helpers";
+import { BLOG_POSTS_CONTENT } from "@/lib/content/posts-content";
 
-// Service-specific FAQ
-const getServiceFAQ = (title: string) => [
+// Importar imagens
+import remocaoArvoreImg from "@/assets/remocao-arvore.jpg";
+import podaEscolaImg from "@/assets/poda-escola.jpg";
+import podaArvoreImg from "@/assets/poda-arvore.jpg";
+import corteGramaImg from "@/assets/corte-grama.jpg";
+import rebaixamentoCopaImg from "@/assets/rebaixamento-copa.jpg";
+import limpezaPosPodaImg from "@/assets/limpeza-pos-poda.jpg";
+import podaCondominioImg from "@/assets/poda-condominio.jpg";
+import extracaoRaizesImg from "@/assets/extracao-raizes.jpg";
+import servicosAlturaImg from "@/assets/servicos-altura.jpg";
+
+const imageMap: Record<string, string> = {
+  "remocao-arvore.jpg": remocaoArvoreImg,
+  "poda-escola.jpg": podaEscolaImg,
+  "poda-arvore.jpg": podaArvoreImg,
+  "corte-grama.jpg": corteGramaImg,
+  "rebaixamento-copa.jpg": rebaixamentoCopaImg,
+  "limpeza-pos-poda.jpg": limpezaPosPodaImg,
+  "poda-condominio.jpg": podaCondominioImg,
+  "extracao-raizes.jpg": extracaoRaizesImg,
+  "servicos-altura.jpg": servicosAlturaImg,
+};
+
+export default function ServicoPage() {
+  const { slug } = useParams();
+  const service = SERVICES.find((s) => s.slug === slug);
+  const serviceContent = slug ? SERVICES_CONTENT[slug] : null;
+
+  if (!service) {
+    return <Navigate to="/servicos" replace />;
+  }
+
+  // Use specific content if available, otherwise fallback to generic
+  const content = serviceContent || {
+    intro: service.description,
+    whenNeeded: [
+      "Galhos tocando fiação elétrica ou telhados",
+      "Árvore apresenta sinais de doença ou praga",
+      "Há risco de queda em tempestades",
+      "A copa está muito densa e bloqueia luz",
+      "Raízes estão danificando calçadas ou estruturas"
+    ],
+    included: [
+      "Avaliação técnica prévia",
+      "Equipamentos de segurança completos",
+      "Sinalização da área de trabalho",
+      "Execução por profissionais treinados",
+      "Limpeza completa do local",
+      "Descarte correto dos resíduos"
+    ],
+    howWeDo: [
+      { step: 1, title: "Avaliação", description: "Visitamos o local para avaliar a árvore e as condições de trabalho" },
+      { step: 2, title: "Planejamento", description: "Definimos a melhor técnica e equipamentos necessários" },
+      { step: 3, title: "Preparação", description: "Sinalizamos a área e preparamos os equipamentos de segurança" },
+      { step: 4, title: "Execução", description: `Realizamos o serviço de ${service.title.toLowerCase()} com técnica e cuidado` },
+      { step: 5, title: "Limpeza", description: "Recolhemos todos os resíduos e deixamos o local limpo" }
+    ],
+    risks: [],
+    relatedServices: [],
+    relatedPosts: [],
+    faq: [
   {
-    question: `Quanto custa o serviço de ${title.toLowerCase()}?`,
+        question: `Quanto custa o serviço de ${service.title.toLowerCase()}?`,
     answer: "O valor depende do porte da árvore, localização e complexidade do trabalho. Entre em contato para uma avaliação gratuita e orçamento sem compromisso.",
   },
   {
@@ -29,43 +91,31 @@ const getServiceFAQ = (title: string) => [
     question: "A limpeza está inclusa no serviço?",
     answer: "Sim! Toda a limpeza e retirada de resíduos está incluída. Deixamos o local limpo no mesmo dia.",
   },
-];
+    ]
+  };
 
-// What's included checklist
-const getIncludedItems = () => [
-  "Avaliação técnica prévia",
-  "Equipamentos de segurança completos",
-  "Sinalização da área de trabalho",
-  "Execução por profissionais treinados",
-  "Limpeza completa do local",
-  "Descarte correto dos resíduos",
-];
+  const relatedServices = serviceContent?.relatedServices 
+    ? SERVICES.filter((s) => serviceContent.relatedServices.includes(s.slug))
+    : SERVICES.filter((s) => s.slug !== slug).slice(0, 4);
 
-// How we do it steps
-const getHowWeDoIt = (serviceTitle: string) => [
-  { step: 1, title: "Avaliação", description: "Visitamos o local para avaliar a árvore e as condições de trabalho" },
-  { step: 2, title: "Planejamento", description: "Definimos a melhor técnica e equipamentos necessários" },
-  { step: 3, title: "Preparação", description: "Sinalizamos a área e preparamos os equipamentos de segurança" },
-  { step: 4, title: "Execução", description: `Realizamos o serviço de ${serviceTitle.toLowerCase()} com técnica e cuidado` },
-  { step: 5, title: "Limpeza", description: "Recolhemos todos os resíduos e deixamos o local limpo" },
-];
+  const relatedPosts = serviceContent?.relatedPosts
+    ? BLOG_POSTS_CONTENT.filter((p) => serviceContent.relatedPosts.includes(p.slug))
+    : [];
 
-export default function ServicoPage() {
-  const { slug } = useParams();
-  const service = SERVICES.find((s) => s.slug === slug);
+  // Select contextual reviews (simplified - in production, map reviews to services)
+  const contextualReviews = REVIEWS.slice(0, 3);
 
-  if (!service) {
-    return <Navigate to="/servicos" replace />;
-  }
-
-  const relatedServices = SERVICES.filter((s) => s.slug !== slug).slice(0, 4);
   const whatsappMessage = `Olá! Gostaria de solicitar um orçamento para ${service.title}.`;
+  
+  const metaDescription = truncateMeta(
+    `${service.description} Atendemos Porto Alegre e Região Metropolitana com segurança e profissionalismo. Solicite orçamento grátis!`
+  );
 
   return (
     <>
       <SEO
         title={`${service.title} em Porto Alegre`}
-        description={`${service.description} Atendemos Porto Alegre e Região Metropolitana com segurança e profissionalismo.`}
+        description={metaDescription}
         canonical={`/servicos/${slug}`}
         type="service"
       />
@@ -108,10 +158,10 @@ export default function ServicoPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <h1 className="font-display text-4xl sm:text-5xl font-bold text-secondary-foreground mb-6">
-                  {service.title}
+                  {service.title} em Porto Alegre
                 </h1>
                 <p className="text-lg text-secondary-foreground/80 mb-8">
-                  {service.description}
+                  {content.intro}
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4">
@@ -121,27 +171,24 @@ export default function ServicoPage() {
                       Solicitar orçamento
                     </a>
                   </Button>
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="border-secondary-foreground/20 text-secondary-foreground"
-                    asChild
-                  >
-                    <a href={getPhoneUrl()}>
-                      <Phone className="w-5 h-5" />
-                      Ligar agora
-                    </a>
-                  </Button>
                 </div>
               </div>
 
-              <div className="aspect-video rounded-xl bg-gradient-to-br from-primary/30 to-primary/10 flex items-center justify-center">
-                <div className="text-center p-8">
-                  <div className="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
-                    <Wrench className="w-10 h-10 text-primary" />
+              <div className="relative aspect-video rounded-xl overflow-hidden shadow-2xl">
+                {service.image && imageMap[service.image] ? (
+                  <img
+                    src={imageMap[service.image]}
+                    alt={`${service.title} realizado pela Artes Do Verde em Porto Alegre`}
+                    title={`${service.title} | Artes Do Verde - ${service.shortDescription}`}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-primary/30 to-primary/10 flex items-center justify-center">
+                    <div className="text-center p-8">
+                      <p className="text-secondary-foreground/70">Imagem do serviço</p>
+                    </div>
                   </div>
-                  <p className="text-secondary-foreground/70">Imagem do serviço</p>
-                </div>
+                )}
               </div>
             </div>
           </div>
@@ -151,23 +198,26 @@ export default function ServicoPage() {
         <section className="py-16 md:py-24 section-light">
           <div className="container-custom">
             <div className="max-w-3xl mx-auto">
-              <div className="flex items-center gap-3 mb-6">
-                <AlertTriangle className="w-8 h-8 text-primary" />
+              <div className="flex items-center gap-3 mb-8">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <AlertTriangle className="w-6 h-6 text-primary" />
+                </div>
                 <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground">
                   Quando você precisa deste serviço?
                 </h2>
               </div>
 
-              <div className="prose prose-lg max-w-none text-muted-foreground">
-                <p>
-                  Você deve considerar o serviço de <strong>{service.title.toLowerCase()}</strong> quando:
+              <div className="bg-card rounded-xl p-6 md:p-8 shadow-card">
+                <p className="text-base text-foreground mb-4 font-medium">
+                  Você deve considerar o serviço de <strong className="text-primary">{service.title.toLowerCase()}</strong> quando:
                 </p>
-                <ul>
-                  <li>Galhos estão tocando fiação elétrica ou telhados</li>
-                  <li>A árvore apresenta sinais de doença ou praga</li>
-                  <li>Há risco de queda em tempestades</li>
-                  <li>A copa está muito densa e bloqueia luz</li>
-                  <li>Raízes estão danificando calçadas ou estruturas</li>
+                <ul className="space-y-3">
+                  {content.whenNeeded.map((item, index) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                      <span className="text-muted-foreground">{item}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
@@ -181,19 +231,19 @@ export default function ServicoPage() {
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-secondary-foreground mb-4">
                 O que está incluso
               </h2>
-              <p className="text-secondary-foreground/80">
+              <p className="text-secondary-foreground/80 max-w-2xl mx-auto">
                 Nosso serviço completo inclui tudo que você precisa
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
-              {getIncludedItems().map((item, index) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
+              {content.included.map((item, index) => (
                 <div
                   key={index}
-                  className="flex items-center gap-3 p-4 rounded-lg bg-secondary-foreground/5"
+                  className="flex items-start gap-3 p-5 rounded-xl bg-secondary-foreground/5 border border-secondary-foreground/10 hover:border-primary/30 hover:bg-secondary-foreground/10 transition-all"
                 >
-                  <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
-                  <span className="text-secondary-foreground">{item}</span>
+                  <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-secondary-foreground leading-relaxed">{item}</span>
                 </div>
               ))}
             </div>
@@ -207,30 +257,35 @@ export default function ServicoPage() {
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-4">
                 Como fazemos
               </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Processo completo e transparente do início ao fim
+              </p>
             </div>
 
             <div className="max-w-4xl mx-auto">
-              {getHowWeDoIt(service.title).map((item, index) => (
-                <div
-                  key={index}
-                  className="flex gap-4 mb-6 last:mb-0"
-                >
-                  <div className="flex-shrink-0">
-                    <div className="w-10 h-10 rounded-full bg-primary text-primary-foreground font-display font-bold flex items-center justify-center">
-                      {item.step}
+              <div className="bg-card rounded-xl p-6 md:p-8 shadow-card">
+                {content.howWeDo.map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex gap-6 mb-8 last:mb-0"
+                  >
+                    <div className="flex-shrink-0">
+                      <div className="w-12 h-12 rounded-xl bg-primary text-primary-foreground font-display font-bold text-lg flex items-center justify-center shadow-lg">
+                        {item.step}
+                      </div>
+                      {index < content.howWeDo.length - 1 && (
+                        <div className="w-0.5 h-16 bg-primary/20 mx-auto mt-3" />
+                      )}
                     </div>
-                    {index < getHowWeDoIt(service.title).length - 1 && (
-                      <div className="w-0.5 h-12 bg-primary/20 mx-auto mt-2" />
-                    )}
+                    <div className="pt-1 flex-1">
+                      <h3 className="font-display font-semibold text-xl text-foreground mb-2">
+                        {item.title}
+                      </h3>
+                      <p className="text-muted-foreground leading-relaxed">{item.description}</p>
+                    </div>
                   </div>
-                  <div className="pt-1">
-                    <h3 className="font-display font-semibold text-lg text-foreground mb-1">
-                      {item.title}
-                    </h3>
-                    <p className="text-muted-foreground">{item.description}</p>
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -256,7 +311,7 @@ export default function ServicoPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {REVIEWS.slice(0, 3).map((review, index) => (
+              {contextualReviews.map((review, index) => (
                 <ReviewCard key={index} {...review} variant="dark" />
               ))}
             </div>
@@ -273,12 +328,13 @@ export default function ServicoPage() {
             </div>
 
             <div className="max-w-3xl mx-auto">
-              <FAQ items={getServiceFAQ(service.title)} variant="light" />
+              <FAQ items={content.faq} variant="light" />
             </div>
           </div>
         </section>
 
         {/* Related Services */}
+        {relatedServices.length > 0 && (
         <section className="py-16 md:py-24 section-dark">
           <div className="container-custom">
             <div className="text-center mb-12">
@@ -305,6 +361,41 @@ export default function ServicoPage() {
             </div>
           </div>
         </section>
+        )}
+
+        {/* Related Posts */}
+        {relatedPosts.length > 0 && (
+          <section className="py-16 md:py-24 section-light">
+            <div className="container-custom">
+              <div className="text-center mb-12">
+                <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-4">
+                  Artigos Relacionados
+                </h2>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                {relatedPosts.map((post) => (
+                  <Link
+                    key={post.slug}
+                    to={`/blog/${post.slug}`}
+                    className="group p-6 rounded-xl bg-card shadow-card hover:shadow-card-hover transition-all"
+                  >
+                    <span className="chip text-xs mb-3">{post.category}</span>
+                    <h3 className="font-display font-semibold text-lg text-foreground mb-2 group-hover:text-primary transition-colors">
+                      {post.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
+                      {post.excerpt}
+                    </p>
+                    <span className="inline-flex items-center gap-2 text-primary font-medium text-sm">
+                      Ler artigo <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* CTA */}
         <CTABlock

@@ -7,13 +7,13 @@ import Footer from "@/components/Footer";
 import CTABlock from "@/components/CTABlock";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import { AREAS, getWhatsAppUrl } from "@/lib/constants";
+import { AREAS, getWhatsAppUrl, SERVICES } from "@/lib/constants";
 
 export default function AreasAtendidasPage() {
   return (
     <>
       <SEO
-        title="Áreas Atendidas - Porto Alegre e Região Metropolitana"
+        title="Poda de Árvores Porto Alegre e Região | Áreas Atendidas"
         description="Atendemos toda Porto Alegre e Região Metropolitana: Zona Sul, Zona Norte, Centro, Zona Leste, Canoas, Gravataí, Viamão e muito mais."
         canonical="/areas-atendidas"
       />
@@ -27,11 +27,41 @@ export default function AreasAtendidasPage() {
           <div className="container-custom">
             <Breadcrumbs items={[{ label: "Áreas Atendidas" }]} />
             <h1 className="font-display text-4xl sm:text-5xl font-bold text-secondary-foreground mb-4">
-              Áreas Atendidas
+              Poda de Árvores em Porto Alegre e Região Metropolitana
             </h1>
             <p className="text-lg text-secondary-foreground/80 max-w-2xl">
-              Prestamos serviços de poda e remoção de árvores em Porto Alegre e toda a Região Metropolitana.
+              Atendemos residências, condomínios e empresas em Porto Alegre e toda a Região Metropolitana com serviços profissionais de poda e remoção de árvores.
             </p>
+          </div>
+        </section>
+
+        {/* Main Services Links */}
+        <section className="py-8 section-light">
+          <div className="container-custom">
+            <div className="flex flex-wrap justify-center gap-3 mb-6">
+              <span className="text-sm text-muted-foreground font-medium">Serviços principais:</span>
+              {SERVICES.filter(s => s.featured).slice(0, 3).map((service) => (
+                <Link
+                  key={service.slug}
+                  to={`/servicos/${service.slug}`}
+                  className="chip hover:bg-primary hover:text-primary-foreground transition-colors"
+                >
+                  {service.title}
+                </Link>
+              ))}
+            </div>
+            <div className="flex flex-wrap justify-center gap-3">
+              <span className="text-sm text-muted-foreground font-medium">Áreas destaque:</span>
+              {AREAS.slice(0, 3).map((area) => (
+                <Link
+                  key={area.slug}
+                  to={`/areas-atendidas/${area.slug}`}
+                  className="chip hover:bg-primary hover:text-primary-foreground transition-colors"
+                >
+                  {area.name}
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
 

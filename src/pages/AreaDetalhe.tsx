@@ -113,38 +113,106 @@ export default function AreaDetalhePage() {
           </div>
         </section>
 
-        {/* Services in area */}
+        {/* Common Problems */}
         <section className="py-16 md:py-24 section-dark">
           <div className="container-custom">
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-secondary-foreground mb-4 text-center">
-              Serviços na {area.name}
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-secondary-foreground mb-8 text-center">
+              Problemas comuns em {area.name}
             </h2>
-            <p className="text-secondary-foreground/80 text-center max-w-2xl mx-auto mb-12">
-              Os serviços mais solicitados na região
+            <div className="max-w-3xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="p-6 rounded-xl bg-secondary-foreground/5">
+                  <h3 className="font-display font-semibold text-lg text-secondary-foreground mb-2">Pós-temporal</h3>
+                  <p className="text-secondary-foreground/70 text-sm">Após tempestades, árvores podem cair ou ficar instáveis, exigindo remoção ou poda de emergência.</p>
+                </div>
+                <div className="p-6 rounded-xl bg-secondary-foreground/5">
+                  <h3 className="font-display font-semibold text-lg text-secondary-foreground mb-2">Fiação elétrica</h3>
+                  <p className="text-secondary-foreground/70 text-sm">Galhos tocando fiação elétrica representam risco e precisam de poda técnica especializada.</p>
+                </div>
+                <div className="p-6 rounded-xl bg-secondary-foreground/5">
+                  <h3 className="font-display font-semibold text-lg text-secondary-foreground mb-2">Copa invadindo telhado</h3>
+                  <p className="text-secondary-foreground/70 text-sm">Árvores muito próximas de casas podem causar danos a telhados e estruturas, necessitando rebaixamento ou poda.</p>
+                </div>
+                <div className="p-6 rounded-xl bg-secondary-foreground/5">
+                  <h3 className="font-display font-semibold text-lg text-secondary-foreground mb-2">Raízes danificando calçadas</h3>
+                  <p className="text-secondary-foreground/70 text-sm">Raízes de árvores grandes podem levantar ou quebrar calçadas, exigindo intervenção especializada.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Most Requested Services */}
+        <section className="py-16 md:py-24 section-light">
+          <div className="container-custom">
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-4 text-center">
+              Serviços mais chamados em {area.name}
+            </h2>
+            <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-8">
+              Os serviços que mais atendemos nesta região
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {SERVICES.slice(0, 6).map((service) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+              {SERVICES.filter(s => s.featured).slice(0, 3).map((service) => (
                 <ServiceCard key={service.slug} {...service} />
               ))}
             </div>
           </div>
         </section>
 
-        {/* Reviews */}
+        {/* Response Time */}
+        <section className="py-16 md:py-24 section-dark">
+          <div className="container-custom">
+            <div className="max-w-3xl mx-auto text-center">
+              <h2 className="font-display text-3xl sm:text-4xl font-bold text-secondary-foreground mb-6">
+                Tempo de resposta
+              </h2>
+              <p className="text-lg text-secondary-foreground/80 mb-4">
+                Atendemos a {area.name} com agilidade. Para emergências, temos atendimento rápido via WhatsApp.
+              </p>
+              <p className="text-secondary-foreground/70">
+                Serviços programados geralmente são agendados em até 5 dias úteis, conforme sua disponibilidade. 
+                Casos de emergência são priorizados e podem ser atendidos em até 24 horas.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Featured Reviews */}
         <section className="py-16 md:py-24 section-light">
           <div className="container-custom">
             <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-8 text-center">
-              Avaliações de clientes
+              Avaliações destacadas
             </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {REVIEWS.slice(0, 3).map((review, index) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+              {REVIEWS.slice(0, 2).map((review, index) => (
                 <ReviewCard key={index} {...review} variant="light" />
               ))}
             </div>
           </div>
         </section>
+
+        {/* Mini Gallery */}
+        <section className="py-16 md:py-24 section-dark">
+          <div className="container-custom">
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-secondary-foreground mb-8 text-center">
+              Trabalhos realizados em {area.name}
+            </h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+              {[1, 2, 3].map((i) => (
+                <div
+                  key={i}
+                  className="aspect-square rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center"
+                  aria-label={`Trabalho de poda realizado pela Artes Do Verde em ${area.name} - imagem ${i}`}
+                >
+                  <span className="text-primary/40 text-sm">Imagem {i}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
 
         {/* FAQ */}
         <section className="py-16 md:py-24 section-dark">

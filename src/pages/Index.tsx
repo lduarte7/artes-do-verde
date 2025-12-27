@@ -7,20 +7,29 @@ import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import ServiceCard from "@/components/ServiceCard";
 import ReviewCard from "@/components/ReviewCard";
+import TestimonialsMarquee from "@/components/TestimonialsMarquee";
 import FAQ from "@/components/FAQ";
 import CTABlock from "@/components/CTABlock";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import LocalBusinessSchema from "@/components/LocalBusinessSchema";
+import InteractiveSelector from "@/components/ui/interactive-selector";
 import { SERVICES, REVIEWS, AREAS, FAQ_HOME, BUSINESS_INFO, getWhatsAppUrl } from "@/lib/constants";
+import podaTecnicaImg from "@/assets/poda-tecnica-arvores-urbanas-artes-do-verde.jpg";
+import podaCestoAereoImg from "@/assets/poda-arvores-cesto-aereo-rede-eletrica-porto-alegre.jpg";
+import podaAlturaImg from "@/assets/poda-em-altura-arvore-grande-porto-alegre.jpg";
+import rebaixamentoCopaImg from "@/assets/rebaixamento-de-copa-poda-estrutural-arvore.jpg";
+import remocaoTransporteImg from "@/assets/remocao-de-arvores-transporte-de-toras.jpg";
+import limpezaPosPodaImg from "@/assets/limpeza-pos-poda-corte-de-arvore.jpg";
+import corteTroncoImg from "@/assets/corte-de-tronco-motosserra-seguranca.jpg";
 
 // Portfolio items
 const portfolioItems = [
-  { tag: "Poda", title: "Poda em residência" },
-  { tag: "Remoção", title: "Remoção de árvore de risco" },
-  { tag: "Condomínio", title: "Manutenção em condomínio" },
-  { tag: "Pós-temporal", title: "Emergência após temporal" },
-  { tag: "Poda", title: "Rebaixamento de copa" },
-  { tag: "Remoção", title: "Remoção com guindaste" },
+  { tag: "Poda", title: "Poda em residência", image: podaTecnicaImg },
+  { tag: "Remoção", title: "Remoção de árvore de risco", image: remocaoTransporteImg },
+  { tag: "Condomínio", title: "Manutenção em condomínio", image: podaCestoAereoImg },
+  { tag: "Pós-temporal", title: "Emergência após temporal", image: limpezaPosPodaImg },
+  { tag: "Poda", title: "Rebaixamento de copa", image: rebaixamentoCopaImg },
+  { tag: "Remoção", title: "Remoção com guindaste", image: podaAlturaImg },
 ];
 
 // Why choose us items
@@ -44,8 +53,8 @@ const Index = () => {
   return (
     <>
       <SEO 
-        title="Poda e Remoção de Árvores em Porto Alegre"
-        description="Serviço profissional de poda e remoção de árvores em Porto Alegre e Região Metropolitana. Atendimento rápido, equipe equipada e limpeza no mesmo dia. Solicite orçamento!"
+        title="Poda de Árvores Porto Alegre | Atendimento Rápido"
+        description="Poda e remoção de árvores em Porto Alegre. Atendimento rápido, equipe equipada e limpeza no mesmo dia. Orçamento grátis!"
         canonical="/"
       />
       <LocalBusinessSchema />
@@ -62,17 +71,20 @@ const Index = () => {
           <div className="container-custom">
             <div className="text-center mb-12">
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                O que nossos clientes dizem
+                O que dizem sobre nossa poda de árvores
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
                 Atendemos Porto Alegre e região com excelência há anos
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              {REVIEWS.slice(0, 3).map((review, index) => (
-                <ReviewCard key={index} {...review} variant="light" />
-              ))}
+            <div className="mb-8">
+              <TestimonialsMarquee 
+                reviews={REVIEWS.slice(0, 8)}
+                speed="normal"
+                direction="left"
+                pauseOnHover={true}
+              />
             </div>
 
             <div className="text-center">
@@ -93,7 +105,7 @@ const Index = () => {
           <div className="container-custom">
             <div className="text-center mb-12">
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-secondary-foreground mb-4">
-                Nossos Serviços
+                Serviços de poda em Porto Alegre
               </h2>
               <p className="text-secondary-foreground/80 max-w-2xl mx-auto">
                 Soluções completas para cuidar das suas árvores com segurança
@@ -107,7 +119,7 @@ const Index = () => {
             </div>
 
             <div className="text-center">
-              <Button asChild variant="outline" className="border-secondary-foreground/20 text-secondary-foreground hover:bg-secondary-foreground/10">
+              <Button asChild className="bg-secondary-foreground text-secondary hover:bg-secondary-foreground/90">
                 <Link to="/servicos">
                   Ver todos os serviços
                   <ArrowRight className="w-4 h-4 ml-2" />
@@ -182,32 +194,11 @@ const Index = () => {
         {/* Portfolio */}
         <section className="py-16 md:py-24 section-light">
           <div className="container-custom">
-            <div className="text-center mb-12">
-              <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                Trabalhos Recentes
-              </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Alguns dos nossos serviços realizados em Porto Alegre e região
-              </p>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              {portfolioItems.map((item, index) => (
-                <div
-                  key={index}
-                  className="group relative aspect-square rounded-xl overflow-hidden bg-gradient-to-br from-primary/20 to-primary/5"
-                >
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center p-4">
-                      <span className="chip text-xs mb-2">{item.tag}</span>
-                      <p className="font-display font-medium text-foreground text-sm sm:text-base">
-                        {item.title}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <InteractiveSelector 
+              items={portfolioItems}
+              title="Trabalhos Recentes"
+              description="Alguns dos nossos serviços realizados em Porto Alegre e região"
+            />
           </div>
         </section>
 

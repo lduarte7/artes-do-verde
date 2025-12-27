@@ -157,6 +157,38 @@ export const REVIEWS = [
     text: "Trabalho muito bem executado, caprichoso e perfeccionista!",
     rating: 5,
   },
+  {
+    name: "Gabriel Coelho",
+    text: "Muito profissional excelente trabalho de confiança",
+    rating: 5,
+  },
+  {
+    name: "Zilma Silva",
+    text: "Maravilhoso trabalho. Muito caprichoso. Serviço impecável",
+    rating: 5,
+  },
+  {
+    name: "Marcelo Cavalli",
+    text: "Ótimo profissionais!!!!",
+    rating: 5,
+    badge: "Local Guide",
+  },
+  {
+    name: "Diego Luz",
+    text: "Melhor qualidade",
+    rating: 5,
+  },
+  {
+    name: "Paulo Afonso Pereira da Rosa",
+    text: "Contratamos poda de elevação da copa de um Flamboyan e o trabalho foi muito bem feito. Excelente!",
+    rating: 5,
+  },
+  {
+    name: "Luiz Felipe Bonfiglio",
+    text: "Trabalho excepcional, recomendo.",
+    rating: 5,
+    badge: "Local Guide",
+  },
 ];
 
 // Areas served
@@ -211,7 +243,7 @@ export const BLOG_POSTS = [
     readTime: "4 min",
   },
   {
-    slug: "poda-arvores-condominio-regras",
+    slug: "poda-de-arvores-em-condominio-porto-alegre",
     title: "Poda de Árvores em Condomínio: Regras e Responsabilidades",
     excerpt: "Entenda quem é responsável pela manutenção das árvores em áreas comuns e como contratar um serviço profissional.",
     category: "Condomínios",

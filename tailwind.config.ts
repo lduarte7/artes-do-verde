@@ -57,6 +57,10 @@ export default {
         },
         "green-dark": "hsl(var(--green-dark))",
         "green-brand": "hsl(var(--green))",
+        cta: {
+          DEFAULT: "hsl(var(--cta-bg))",
+          foreground: "hsl(var(--cta-foreground))",
+        },
       },
       fontFamily: {
         display: ["Outfit", "sans-serif"],

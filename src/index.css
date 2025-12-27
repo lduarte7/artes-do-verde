@@ -52,6 +52,8 @@
     --hero-overlay: linear-gradient(135deg, hsla(132, 100%, 13%, 0.85) 0%, hsla(127, 69%, 26%, 0.7) 100%);
     --section-dark-bg: var(--green-dark);
     --section-light-bg: var(--cream);
+    --cta-bg: 132 85% 18%;
+    --cta-foreground: 40 33% 97%;
     --cta-glow: 0 8px 32px hsla(127, 69%, 26%, 0.35);
     --card-shadow: 0 4px 24px hsla(132, 100%, 13%, 0.08);
     --card-shadow-hover: 0 8px 40px hsla(132, 100%, 13%, 0.15);
@@ -153,6 +155,131 @@
            bg-secondary-foreground/10 text-secondary-foreground 
            transition-colors hover:bg-secondary-foreground/20;
   }
+
+  /* Blog Article Prose Styles */
+  .blog-prose {
+    @apply text-foreground leading-relaxed;
+    font-size: 1.0625rem;
+    line-height: 1.8;
+  }
+
+  .blog-prose > p:first-of-type {
+    @apply text-lg md:text-xl text-muted-foreground font-normal leading-relaxed;
+  }
+
+  .blog-prose p {
+    @apply mb-5;
+  }
+
+  .blog-prose h2 {
+    @apply font-display text-2xl sm:text-3xl font-bold text-foreground mt-12 mb-6;
+    @apply pb-3 border-b border-border;
+  }
+
+  .blog-prose h3 {
+    @apply font-display text-xl sm:text-2xl font-semibold text-foreground mt-8 mb-4;
+  }
+
+  .blog-prose h4 {
+    @apply font-display text-lg font-semibold text-foreground mt-6 mb-3;
+  }
+
+  .blog-prose ul {
+    @apply my-6 space-y-3;
+  }
+
+  .blog-prose ul li {
+    @apply relative pl-7 text-foreground;
+  }
+
+  .blog-prose ul li::before {
+    content: '';
+    @apply absolute left-0 top-[0.6rem] w-2 h-2 rounded-full bg-primary;
+  }
+
+  .blog-prose ol {
+    @apply my-6 space-y-3 list-none;
+    counter-reset: item;
+  }
+
+  .blog-prose ol li {
+    @apply relative pl-10 text-foreground;
+    counter-increment: item;
+  }
+
+  .blog-prose ol li::before {
+    content: counter(item);
+    @apply absolute left-0 top-0 w-7 h-7 rounded-full bg-primary/10 text-primary font-semibold text-sm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .blog-prose strong {
+    @apply font-semibold text-foreground;
+  }
+
+  .blog-prose a {
+    @apply text-primary underline underline-offset-2 hover:text-primary/80 transition-colors;
+  }
+
+  .blog-prose blockquote {
+    @apply my-8 pl-6 border-l-4 border-primary bg-primary/5 py-4 pr-6 rounded-r-xl italic text-muted-foreground;
+  }
+
+  .blog-prose img {
+    @apply my-8 rounded-2xl shadow-lg w-full;
+  }
+
+  .blog-prose hr {
+    @apply my-10 border-border;
+  }
+
+  /* Emoji headings styling */
+  .blog-prose h2:has(> :first-child) {
+    @apply flex items-center gap-3;
+  }
+
+  /* Highlight boxes in content */
+  .blog-prose > p:has(👉),
+  .blog-prose > p:has(⚠️),
+  .blog-prose > p:has(💡) {
+    @apply bg-primary/5 border border-primary/20 rounded-xl p-4 my-6;
+  }
+
+  /* Code blocks */
+  .blog-prose code {
+    @apply bg-muted px-2 py-1 rounded text-sm font-mono;
+  }
+
+  .blog-prose pre {
+    @apply bg-secondary text-secondary-foreground p-6 rounded-xl overflow-x-auto my-8;
+  }
+
+  .blog-prose pre code {
+    @apply bg-transparent p-0;
+  }
+
+  /* Table styling */
+  .blog-prose table {
+    @apply w-full my-8 text-sm;
+  }
+
+  .blog-prose thead {
+    @apply bg-muted;
+  }
+
+  .blog-prose th {
+    @apply p-3 text-left font-semibold text-foreground border-b border-border;
+  }
+
+  .blog-prose td {
+    @apply p-3 border-b border-border;
+  }
+
+  .blog-prose tbody tr:hover {
+    @apply bg-muted/50;
+  }
 }
 
 @layer utilities {
@@ -185,5 +312,53 @@
   @keyframes slideUp {
     from { opacity: 0; transform: translateY(40px); }
     to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Marquee animations */
+  .animate-marquee {
+    animation: marquee 28s linear infinite;
+  }
+
+  .animate-marquee-slow {
+    animation: marquee 45s linear infinite;
+  }
+
+  .animate-marquee-fast {
+    animation: marquee 18s linear infinite;
+  }
+
+  .animate-marquee-reverse {
+    animation: marquee-reverse 28s linear infinite;
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-33.333% - 1.5rem));
+    }
+  }
+
+  @keyframes marquee-reverse {
+    from {
+      transform: translateX(calc(-33.333% - 1.5rem));
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes gradient {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .animate-gradient {
+    animation: gradient 3s ease infinite;
   }
 }

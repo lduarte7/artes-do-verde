@@ -10,7 +10,11 @@ import { BUSINESS_INFO, getWhatsAppUrl, getPhoneUrl } from "@/lib/constants";
 export default function ContatoPage() {
   return (
     <>
-      <SEO title="Contato" description="Entre em contato para solicitar orçamento de poda e remoção de árvores em Porto Alegre. WhatsApp, telefone e endereço." canonical="/contato" />
+      <SEO 
+        title="Contato | Poda de Árvores Porto Alegre | Orçamento Grátis" 
+        description="Entre em contato para solicitar orçamento de poda e remoção de árvores em Porto Alegre. WhatsApp, telefone e endereço." 
+        canonical="/contato" 
+      />
       <Header />
       <WhatsAppButton />
 
@@ -18,7 +22,7 @@ export default function ContatoPage() {
         <section className="py-12 md:py-16 section-dark">
           <div className="container-custom">
             <Breadcrumbs items={[{ label: "Contato" }]} />
-            <h1 className="font-display text-4xl sm:text-5xl font-bold text-secondary-foreground mb-4">Contato</h1>
+            <h1 className="font-display text-4xl sm:text-5xl font-bold text-secondary-foreground mb-4">Contato | Poda de Árvores Porto Alegre</h1>
             <p className="text-lg text-secondary-foreground/80">Fale conosco e solicite seu orçamento gratuito.</p>
           </div>
         </section>
@@ -59,8 +63,18 @@ export default function ContatoPage() {
                 </div>
               </div>
 
-              <div className="aspect-video lg:aspect-square rounded-xl bg-muted flex items-center justify-center">
-                <p className="text-muted-foreground">Mapa Google (embed)</p>
+              <div className="aspect-video lg:aspect-square rounded-xl overflow-hidden shadow-lg">
+                <iframe
+                  src={`https://www.google.com/maps?q=${encodeURIComponent(BUSINESS_INFO.address.full)}&output=embed`}
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title={`Localização da ${BUSINESS_INFO.name} - ${BUSINESS_INFO.address.full}`}
+                  aria-label={`Mapa do Google Maps mostrando a localização da ${BUSINESS_INFO.name} em ${BUSINESS_INFO.address.full}`}
+                />
               </div>
             </div>
           </div>
