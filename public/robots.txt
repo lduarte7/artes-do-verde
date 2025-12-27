@@ -1,14 +1,35 @@
+# robots.txt para Artes do Verde
+# https://artes-do-verde.vercel.app
+
+User-agent: *
+Allow: /
+
+# Bloquear páginas administrativas ou de desenvolvimento (se houver)
+Disallow: /admin/
+Disallow: /api/
+
+# Permitir bots de busca principais
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 1
 
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 1
 
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+# Permitir bots de redes sociais
 User-agent: Twitterbot
 Allow: /
 
 User-agent: facebookexternalhit
 Allow: /
 
-User-agent: *
+User-agent: LinkedInBot
 Allow: /
+
+# Sitemap
+Sitemap: https://artes-do-verde.vercel.app/sitemap.xml
