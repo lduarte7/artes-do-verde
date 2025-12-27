@@ -12,7 +12,7 @@ const __dirname = dirname(__filename);
 const rootDir = join(__dirname, '..');
 
 // URL base do site
-const SITE_URL = 'https://artes-do-verde.vercel.app';
+const SITE_URL = 'https://artesdoverde.com.br';
 
 // Ler os dados dos serviços, áreas e posts
 const constantsPath = join(rootDir, 'src/lib/constants.ts');

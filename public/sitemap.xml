@@ -4,187 +4,187 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
-    <loc>https://artes-do-verde.vercel.app</loc>
+    <loc>https://artesdoverde.com.br</loc>
     <lastmod>2025-12-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://artes-do-verde.vercel.app/servicos</loc>
+    <loc>https://artesdoverde.com.br/servicos</loc>
     <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://artes-do-verde.vercel.app/areas-atendidas</loc>
+    <loc>https://artesdoverde.com.br/areas-atendidas</loc>
     <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://artes-do-verde.vercel.app/blog</loc>
+    <loc>https://artesdoverde.com.br/blog</loc>
     <lastmod>2025-12-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://artes-do-verde.vercel.app/sobre</loc>
+    <loc>https://artesdoverde.com.br/sobre</loc>
     <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://artes-do-verde.vercel.app/contato</loc>
+    <loc>https://artesdoverde.com.br/contato</loc>
     <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://artes-do-verde.vercel.app/servicos/remocao-de-arvores</loc>
+    <loc>https://artesdoverde.com.br/servicos/remocao-de-arvores</loc>
     <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://artes-do-verde.vercel.app/servicos/poda-de-arvores-em-escolas-e-empresas</loc>
+    <loc>https://artesdoverde.com.br/servicos/poda-de-arvores-em-escolas-e-empresas</loc>
     <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://artes-do-verde.vercel.app/servicos/poda-de-arvores</loc>
+    <loc>https://artesdoverde.com.br/servicos/poda-de-arvores</loc>
     <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://artes-do-verde.vercel.app/servicos/corte-e-manutencao-de-grama</loc>
+    <loc>https://artesdoverde.com.br/servicos/corte-e-manutencao-de-grama</loc>
     <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://artes-do-verde.vercel.app/servicos/rebaixamento-de-copas</loc>
+    <loc>https://artesdoverde.com.br/servicos/rebaixamento-de-copas</loc>
     <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://artes-do-verde.vercel.app/servicos/limpeza-pos-poda</loc>
+    <loc>https://artesdoverde.com.br/servicos/limpeza-pos-poda</loc>
     <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://artes-do-verde.vercel.app/servicos/poda-de-arvore-em-condominio</loc>
+    <loc>https://artesdoverde.com.br/servicos/poda-de-arvore-em-condominio</loc>
     <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://artes-do-verde.vercel.app/servicos/extracao-de-raizes</loc>
+    <loc>https://artesdoverde.com.br/servicos/extracao-de-raizes</loc>
     <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://artes-do-verde.vercel.app/servicos/servicos-em-altura</loc>
+    <loc>https://artesdoverde.com.br/servicos/servicos-em-altura</loc>
     <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://artes-do-verde.vercel.app/areas-atendidas/zona-sul</loc>
+    <loc>https://artesdoverde.com.br/areas-atendidas/zona-sul</loc>
     <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://artes-do-verde.vercel.app/areas-atendidas/zona-norte</loc>
+    <loc>https://artesdoverde.com.br/areas-atendidas/zona-norte</loc>
     <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://artes-do-verde.vercel.app/areas-atendidas/centro</loc>
+    <loc>https://artesdoverde.com.br/areas-atendidas/centro</loc>
     <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://artes-do-verde.vercel.app/areas-atendidas/zona-leste</loc>
+    <loc>https://artesdoverde.com.br/areas-atendidas/zona-leste</loc>
     <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://artes-do-verde.vercel.app/areas-atendidas/regiao-metropolitana</loc>
+    <loc>https://artesdoverde.com.br/areas-atendidas/regiao-metropolitana</loc>
     <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://artes-do-verde.vercel.app/blog/quando-podar-arvores-porto-alegre</loc>
+    <loc>https://artesdoverde.com.br/blog/quando-podar-arvores-porto-alegre</loc>
     <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://artes-do-verde.vercel.app/blog/arvore-caiu-temporal-o-que-fazer</loc>
+    <loc>https://artesdoverde.com.br/blog/arvore-caiu-temporal-o-que-fazer</loc>
     <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://artes-do-verde.vercel.app/blog/poda-de-arvores-em-condominio-porto-alegre</loc>
+    <loc>https://artesdoverde.com.br/blog/poda-de-arvores-em-condominio-porto-alegre</loc>
     <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://artes-do-verde.vercel.app/blog/autorizacao-corte-arvore-smamus</loc>
+    <loc>https://artesdoverde.com.br/blog/autorizacao-corte-arvore-smamus</loc>
     <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://artes-do-verde.vercel.app/blog/quanto-custa-remover-arvore</loc>
+    <loc>https://artesdoverde.com.br/blog/quanto-custa-remover-arvore</loc>
     <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://artes-do-verde.vercel.app/blog/como-escolher-empresa-poda-arvores</loc>
+    <loc>https://artesdoverde.com.br/blog/como-escolher-empresa-poda-arvores</loc>
     <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://artes-do-verde.vercel.app/blog/poda-ou-remocao-de-arvores-porto-alegre</loc>
+    <loc>https://artesdoverde.com.br/blog/poda-ou-remocao-de-arvores-porto-alegre</loc>
     <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://artes-do-verde.vercel.app/blog/permitido-podar-arvores-porto-alegre</loc>
+    <loc>https://artesdoverde.com.br/blog/permitido-podar-arvores-porto-alegre</loc>
     <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://artes-do-verde.vercel.app/blog/quanto-custa-poda-de-arvore-porto-alegre</loc>
+    <loc>https://artesdoverde.com.br/blog/quanto-custa-poda-de-arvore-porto-alegre</loc>
     <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://artes-do-verde.vercel.app/blog/pos-temporal-quando-chamar-empresa-poda-porto-alegre</loc>
+    <loc>https://artesdoverde.com.br/blog/pos-temporal-quando-chamar-empresa-poda-porto-alegre</loc>
     <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://artes-do-verde.vercel.app/blog/riscos-contratar-poda-amadora-porto-alegre</loc>
+    <loc>https://artesdoverde.com.br/blog/riscos-contratar-poda-amadora-porto-alegre</loc>
     <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

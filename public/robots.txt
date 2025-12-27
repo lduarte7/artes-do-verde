@@ -1,5 +1,5 @@
 # robots.txt para Artes do Verde
-# https://artes-do-verde.vercel.app
+# https://artesdoverde.com.br
 
 User-agent: *
 Allow: /
@@ -32,4 +32,4 @@ User-agent: LinkedInBot
 Allow: /
 
 # Sitemap
-Sitemap: https://artes-do-verde.vercel.app/sitemap.xml
+Sitemap: https://artesdoverde.com.br/sitemap.xml
