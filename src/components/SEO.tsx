@@ -68,6 +68,9 @@ export default function SEO({
       <meta name="language" content="pt-BR" />
       <link rel="canonical" href={currentUrl} />
       
+      {/* Google Search Console Verification */}
+      <meta name="google-site-verification" content="-wjUHrDHupop-VPJjZL-plMfsHr_Jfzi2bExkgxI3Rg" />
+      
       {/* Robots */}
       {noindex ? (
         <meta name="robots" content="noindex, nofollow" />
